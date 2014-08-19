@@ -16,16 +16,9 @@
  *
  */
 
-package com.antonioleiva.mvpexample.app.Login;
+package com.wahyuadityanugraha.mvpexample.app.FindItems;
 
-public interface LoginView {
-    public void showProgress();
+public interface FindItemsInteractor {
 
-    public void hideProgress();
-
-    public void setUsernameError();
-
-    public void setPasswordError();
-
-    public void navigateToHome();
+    public void findItems(OnFinishedListener listener);
 }

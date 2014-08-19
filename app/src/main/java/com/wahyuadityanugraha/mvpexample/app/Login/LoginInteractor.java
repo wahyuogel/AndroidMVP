@@ -16,9 +16,8 @@
  *
  */
 
-package com.antonioleiva.mvpexample.app.main;
+package com.wahyuadityanugraha.mvpexample.app.Login;
 
-public interface FindItemsInteractor {
-
-    public void findItems(OnFinishedListener listener);
+public interface LoginInteractor {
+    public void login(String username, String password, OnLoginFinishedListener listener);
 }

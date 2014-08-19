@@ -16,7 +16,7 @@
  *
  */
 
-package com.antonioleiva.mvpexample.app.Login;
+package com.wahyuadityanugraha.mvpexample.app.Login;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -26,7 +26,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.antonioleiva.mvpexample.app.R;
-import com.antonioleiva.mvpexample.app.main.MainActivity;
+import com.wahyuadityanugraha.mvpexample.app.FindItems.FindItemsActivity;
 
 public class LoginActivity extends Activity implements LoginView, View.OnClickListener {
 
@@ -65,7 +65,7 @@ public class LoginActivity extends Activity implements LoginView, View.OnClickLi
     }
 
     @Override public void navigateToHome() {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, FindItemsActivity.class));
         finish();
     }
 

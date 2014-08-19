@@ -16,8 +16,17 @@
  *
  */
 
-package com.antonioleiva.mvpexample.app.Login;
+package com.wahyuadityanugraha.mvpexample.app.FindItems;
 
-public interface LoginInteractor {
-    public void login(String username, String password, OnLoginFinishedListener listener);
+import java.util.List;
+
+public interface FindItemsView {
+
+    public void showProgress();
+
+    public void hideProgress();
+
+    public void setItems(List<String> items);
+
+    public void showMessage(String message);
 }

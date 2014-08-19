@@ -16,11 +16,16 @@
  *
  */
 
-package com.antonioleiva.mvpexample.app.main;
+package com.wahyuadityanugraha.mvpexample.app.Login;
 
-import java.util.List;
+public interface LoginView {
+    public void showProgress();
 
-public interface OnFinishedListener {
+    public void hideProgress();
 
-    void onFinished(List<String> items);
+    public void setUsernameError();
+
+    public void setPasswordError();
+
+    public void navigateToHome();
 }

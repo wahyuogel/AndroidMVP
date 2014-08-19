@@ -16,8 +16,11 @@
  *
  */
 
-package com.antonioleiva.mvpexample.app.Login;
+package com.wahyuadityanugraha.mvpexample.app.FindItems;
 
-public interface LoginPresenter {
-    public void validateCredentials(String username, String password);
+import java.util.List;
+
+public interface OnFinishedListener {
+
+    void onFinished(List<String> items);
 }

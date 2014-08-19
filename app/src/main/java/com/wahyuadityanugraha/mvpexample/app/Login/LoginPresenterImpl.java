@@ -16,7 +16,7 @@
  *
  */
 
-package com.antonioleiva.mvpexample.app.Login;
+package com.wahyuadityanugraha.mvpexample.app.Login;
 
 public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListener {
 

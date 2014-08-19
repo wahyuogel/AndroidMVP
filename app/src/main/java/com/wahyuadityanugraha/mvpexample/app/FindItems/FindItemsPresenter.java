@@ -16,13 +16,11 @@
  *
  */
 
-package com.antonioleiva.mvpexample.app.Login;
+package com.wahyuadityanugraha.mvpexample.app.FindItems;
 
-public interface OnLoginFinishedListener {
+public interface FindItemsPresenter {
 
-    public void onUsernameError();
+    public void onResume();
 
-    public void onPasswordError();
-
-    public void onSuccess();
+    public void onItemClicked(int position);
 }

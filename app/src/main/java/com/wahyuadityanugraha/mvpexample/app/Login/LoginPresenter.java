@@ -16,11 +16,8 @@
  *
  */
 
-package com.antonioleiva.mvpexample.app.main;
+package com.wahyuadityanugraha.mvpexample.app.Login;
 
-public interface MainPresenter {
-
-    public void onResume();
-
-    public void onItemClicked(int position);
+public interface LoginPresenter {
+    public void validateCredentials(String username, String password);
 }

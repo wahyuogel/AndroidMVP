@@ -16,7 +16,7 @@
  *
  */
 
-package com.antonioleiva.mvpexample.app.main;
+package com.wahyuadityanugraha.mvpexample.app.FindItems;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -33,11 +33,11 @@ import com.antonioleiva.mvpexample.app.R;
 
 import java.util.List;
 
-public class MainActivity extends Activity implements MainView, AdapterView.OnItemClickListener {
+public class FindItemsActivity extends Activity implements FindItemsView, AdapterView.OnItemClickListener {
 
     private ListView listView;
     private ProgressBar progressBar;
-    private MainPresenter presenter;
+    private FindItemsPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class MainActivity extends Activity implements MainView, AdapterView.OnIt
         listView = (ListView) findViewById(R.id.list);
         listView.setOnItemClickListener(this);
         progressBar = (ProgressBar) findViewById(R.id.progress);
-        presenter = new MainPresenterImpl(this);
+        presenter = new FindItemsPresenterImpl(this);
 
     }
 

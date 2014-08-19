@@ -16,16 +16,16 @@
  *
  */
 
-package com.antonioleiva.mvpexample.app.main;
+package com.wahyuadityanugraha.mvpexample.app.FindItems;
 
 import java.util.List;
 
-public class MainPresenterImpl implements MainPresenter, OnFinishedListener {
+public class FindItemsPresenterImpl implements FindItemsPresenter, OnFinishedListener {
 
-    private MainView mainView;
+    private FindItemsView mainView;
     private FindItemsInteractor findItemsInteractor;
 
-    public MainPresenterImpl(MainView mainView) {
+    public FindItemsPresenterImpl(FindItemsView mainView) {
         this.mainView = mainView;
         findItemsInteractor = new FindItemsInteractorImpl();
     }
