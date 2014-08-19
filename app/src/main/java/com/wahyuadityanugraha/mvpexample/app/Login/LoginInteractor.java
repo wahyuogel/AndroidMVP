@@ -16,7 +16,7 @@
  *
  */
 
-package com.wahyuadityanugraha.mvpexample.app.Login;
+package com.wahyuadityanugraha.mvpexample.app.login;
 
 public interface LoginInteractor {
     public void login(String username, String password, OnLoginFinishedListener listener);

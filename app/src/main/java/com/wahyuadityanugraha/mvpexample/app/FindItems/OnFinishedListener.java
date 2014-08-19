@@ -16,11 +16,13 @@
  *
  */
 
-package com.wahyuadityanugraha.mvpexample.app.FindItems;
+package com.wahyuadityanugraha.mvpexample.app.finditems;
+
+import com.wahyuadityanugraha.mvpexample.app.entities.Feed;
 
 import java.util.List;
 
 public interface OnFinishedListener {
 
-    void onFinished(List<String> items);
+    void onFinished(List<Feed> items);
 }

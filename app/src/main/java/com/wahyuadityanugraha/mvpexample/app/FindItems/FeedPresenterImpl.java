@@ -16,30 +16,32 @@
  *
  */
 
-package com.wahyuadityanugraha.mvpexample.app.FindItems;
+package com.wahyuadityanugraha.mvpexample.app.finditems;
+
+import com.wahyuadityanugraha.mvpexample.app.entities.Feed;
 
 import java.util.List;
 
-public class FindItemsPresenterImpl implements FindItemsPresenter, OnFinishedListener {
+public class FeedPresenterImpl implements FeedPresenter, OnFinishedListener {
 
-    private FindItemsView mainView;
-    private FindItemsInteractor findItemsInteractor;
+    private FeedFunction mainView;
+    private FeedInteractor feedInteractor;
 
-    public FindItemsPresenterImpl(FindItemsView mainView) {
+    public FeedPresenterImpl(FeedFunction mainView) {
         this.mainView = mainView;
-        findItemsInteractor = new FindItemsInteractorImpl();
+        feedInteractor = new FeedInteractorImpl();
     }
 
     @Override public void onResume() {
         mainView.showProgress();
-        findItemsInteractor.findItems(this);
+        feedInteractor.findItems(this);
     }
 
     @Override public void onItemClicked(int position) {
         mainView.showMessage(String.format("Position %d clicked", position + 1));
     }
 
-    @Override public void onFinished(List<String> items) {
+    @Override public void onFinished(List<Feed> items) {
         mainView.setItems(items);
         mainView.hideProgress();
     }

@@ -16,9 +16,16 @@
  *
  */
 
-package com.wahyuadityanugraha.mvpexample.app.FindItems;
+package com.wahyuadityanugraha.mvpexample.app.login;
 
-public interface FindItemsInteractor {
+public interface LoginFunction {
+    public void showProgress();
 
-    public void findItems(OnFinishedListener listener);
+    public void hideProgress();
+
+    public void setUsernameError();
+
+    public void setPasswordError();
+
+    public void navigateToHome();
 }

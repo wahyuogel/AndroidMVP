@@ -16,34 +16,34 @@
  *
  */
 
-package com.wahyuadityanugraha.mvpexample.app.Login;
+package com.wahyuadityanugraha.mvpexample.app.login;
 
 public class LoginPresenterImpl implements LoginPresenter, OnLoginFinishedListener {
 
-    private LoginView loginView;
+    private LoginFunction loginFunction;
     private LoginInteractor loginInteractor;
 
-    public LoginPresenterImpl(LoginView loginView) {
-        this.loginView = loginView;
+    public LoginPresenterImpl(LoginFunction loginFunction) {
+        this.loginFunction = loginFunction;
         this.loginInteractor = new LoginInteractorImpl();
     }
 
     @Override public void validateCredentials(String username, String password) {
-        loginView.showProgress();
+        loginFunction.showProgress();
         loginInteractor.login(username, password, this);
     }
 
     @Override public void onUsernameError() {
-        loginView.setUsernameError();
-        loginView.hideProgress();
+        loginFunction.setUsernameError();
+        loginFunction.hideProgress();
     }
 
     @Override public void onPasswordError() {
-        loginView.setPasswordError();
-        loginView.hideProgress();
+        loginFunction.setPasswordError();
+        loginFunction.hideProgress();
     }
 
     @Override public void onSuccess() {
-        loginView.navigateToHome();
+        loginFunction.navigateToHome();
     }
 }

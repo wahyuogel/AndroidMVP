@@ -16,11 +16,19 @@
  *
  */
 
-package com.wahyuadityanugraha.mvpexample.app.FindItems;
+package com.wahyuadityanugraha.mvpexample.app.finditems;
 
-public interface FindItemsPresenter {
+import com.wahyuadityanugraha.mvpexample.app.entities.Feed;
 
-    public void onResume();
+import java.util.List;
 
-    public void onItemClicked(int position);
+public interface FeedFunction {
+
+    public void showProgress();
+
+    public void hideProgress();
+
+    public void setItems(List<Feed> items);
+
+    public void showMessage(String message);
 }

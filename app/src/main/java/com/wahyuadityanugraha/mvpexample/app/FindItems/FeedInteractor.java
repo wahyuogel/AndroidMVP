@@ -16,16 +16,9 @@
  *
  */
 
-package com.wahyuadityanugraha.mvpexample.app.Login;
+package com.wahyuadityanugraha.mvpexample.app.finditems;
 
-public interface LoginView {
-    public void showProgress();
+public interface FeedInteractor {
 
-    public void hideProgress();
-
-    public void setUsernameError();
-
-    public void setPasswordError();
-
-    public void navigateToHome();
+    public void findItems(OnFinishedListener listener);
 }

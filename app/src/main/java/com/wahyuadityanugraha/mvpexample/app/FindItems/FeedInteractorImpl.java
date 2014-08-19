@@ -16,18 +16,26 @@
  *
  */
 
-package com.wahyuadityanugraha.mvpexample.app.FindItems;
+package com.wahyuadityanugraha.mvpexample.app.finditems;
 
 import android.os.Handler;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class FindItemsInteractorImpl implements FindItemsInteractor {
+public class FeedInteractorImpl implements FeedInteractor {
     @Override public void findItems(final OnFinishedListener listener) {
         new Handler().postDelayed(new Runnable() {
             @Override public void run() {
-                listener.onFinished(createArrayList());
+
             }
         }, 2000);
     }
@@ -46,4 +54,7 @@ public class FindItemsInteractorImpl implements FindItemsInteractor {
                 "Item 10"
         );
     }
+
+
+
 }
