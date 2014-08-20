@@ -17,7 +17,8 @@ public class DatabaseManager<H extends OrmLiteSqliteOpenHelper> {
     {
         if(helper == null)
         {
-            helper = (H) OpenHelperManager.getHelper(context);
+            OpenHelperManager.setOpenHelperClass(DatabaseHelper.class);
+            helper = (H) OpenHelperManager.getHelper(context, DatabaseHelper.class);
         }
         return helper;
     }

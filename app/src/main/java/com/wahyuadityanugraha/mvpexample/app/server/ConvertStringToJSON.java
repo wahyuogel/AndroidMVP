@@ -2,6 +2,7 @@ package com.wahyuadityanugraha.mvpexample.app.server;
 
 import android.content.Context;
 
+import com.wahyuadityanugraha.mvpexample.app.databases.Repo;
 import com.wahyuadityanugraha.mvpexample.app.entities.Feeds;
 
 import org.codehaus.jackson.JsonParseException;

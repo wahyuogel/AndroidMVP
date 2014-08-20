@@ -10,10 +10,11 @@ package com.wahyuadityanugraha.mvpexample.app.databases;
         import com.j256.ormlite.dao.Dao;
         import com.j256.ormlite.stmt.PreparedQuery;
         import com.j256.ormlite.stmt.QueryBuilder;
+        import com.wahyuadityanugraha.mvpexample.app.entities.Feed;
 
 public class RepoFeed {
 
-    Dao<FeedModel, String> feedDao;
+    Dao<Feed, String> feedDao;
 
     public RepoFeed(DatabaseHelper db)
     {
@@ -25,7 +26,7 @@ public class RepoFeed {
         }
     }
 
-    public int create(FeedModel feed)
+    public int create(Feed feed)
     {
         try {
             return feedDao.create(feed);
@@ -35,7 +36,7 @@ public class RepoFeed {
         }
         return 0;
     }
-    public int update(FeedModel feed)
+    public int update(Feed feed)
     {
         try {
             return feedDao.update(feed);
@@ -45,7 +46,7 @@ public class RepoFeed {
         }
         return 0;
     }
-    public int delete(FeedModel feed)
+    public int delete(Feed feed)
     {
         try {
             return feedDao.delete(feed);
@@ -55,14 +56,14 @@ public class RepoFeed {
         }
         return 0;
     }
-    public FeedModel getByName(String username)
+    public Feed getByName(String username)
     {
         try {
-            QueryBuilder<FeedModel, String> qb = feedDao.queryBuilder();
+            QueryBuilder<Feed, String> qb = feedDao.queryBuilder();
 
             qb.where().eq("name", username);
 
-            PreparedQuery<FeedModel> pq = qb.prepare();
+            PreparedQuery<Feed> pq = qb.prepare();
             return feedDao.queryForFirst(pq);
         } catch (SQLException e) {
             // TODO: Exception Handling
@@ -70,7 +71,7 @@ public class RepoFeed {
         }
         return null;
     }
-    public List<FeedModel> getAll()
+    public List<Feed> getAll()
     {
         try {
             return feedDao.queryForAll();

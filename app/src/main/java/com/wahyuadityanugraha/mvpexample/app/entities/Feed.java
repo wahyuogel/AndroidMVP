@@ -1,5 +1,9 @@
 package com.wahyuadityanugraha.mvpexample.app.entities;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+import com.wahyuadityanugraha.mvpexample.app.databases.Repo;
+
 import org.codehaus.jackson.annotate.JsonAnyGetter;
 import org.codehaus.jackson.annotate.JsonAnySetter;
 import org.codehaus.jackson.annotate.JsonIgnore;
@@ -21,22 +25,38 @@ import java.util.Map;
         "url",
         "name"
 })
+
+@DatabaseTable
 public class Feed {
 
+    @DatabaseField
     @JsonProperty("profilePic")
     private String profilePic;
+
+    @DatabaseField(id=true)
     @JsonProperty("id")
     private Integer id;
+
+    @DatabaseField
     @JsonProperty("image")
     private String image;
+
+    @DatabaseField
     @JsonProperty("timeStamp")
     private String timeStamp;
+
+    @DatabaseField
     @JsonProperty("status")
     private String status;
+
+    @DatabaseField
     @JsonProperty("url")
     private String url;
+
+    @DatabaseField
     @JsonProperty("name")
     private String name;
+
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -118,6 +138,23 @@ public class Feed {
     @JsonAnySetter
     public void setAdditionalProperty(String name, Object value) {
         this.additionalProperties.put(name, value);
+    }
+
+    public int save(Repo repo)
+    {
+        if(repo.feedObject.getByName(name) == null)
+        {
+            return repo.feedObject.create(this);
+        }
+        else
+        {
+            return repo.feedObject.update(this);
+        }
+    }
+
+    public int delete(Repo repo)
+    {
+        return repo.feedObject.delete(this);
     }
 
 }

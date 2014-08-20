@@ -10,5 +10,6 @@
     <string name="title_activity_main">MVP Example</string>
     <string name="username_error">Username cannot be empty</string>
     <string name="password_error">Password cannot be empty</string>
+    <string name="open_helper_classname">com.wahyuadityanugraha.mvpexample.app.databases.DatabaseHelper</string>
 
 </resources>

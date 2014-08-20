@@ -9,14 +9,14 @@ public class Repo {
 
     DatabaseHelper db;
 
-    public RepoFeed Feeds;
+    public RepoFeed feedObject;
 
     public Repo(Context context)
     {
         DatabaseManager<DatabaseHelper> manager = new DatabaseManager<DatabaseHelper>();
         db = manager.getHelper(context);
 
-        Feeds = new RepoFeed(db);
+        feedObject = new RepoFeed(db);
 
     }
 

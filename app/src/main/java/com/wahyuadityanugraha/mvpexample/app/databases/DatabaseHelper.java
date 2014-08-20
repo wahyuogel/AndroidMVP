@@ -8,6 +8,7 @@ import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import com.wahyuadityanugraha.mvpexample.app.entities.Feed;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -18,9 +19,9 @@ import java.sql.SQLException;
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
 
     private static final String DATABASE_NAME = "db.sqlite";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
-    private Dao<FeedModel, String> feedDao = null;
+    private Dao<Feed, String> feedDao = null;
 
 
     public DatabaseHelper(Context context) {
@@ -43,7 +44,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             Log.i(DatabaseHelper.class.getName(), "onCreate");
 
             //Create table with utils from ORMLite, source from java object
-            TableUtils.createTable(connectionSource, FeedModel.class);
+            TableUtils.createTable(connectionSource, Feed.class);
 
         } catch (SQLException e) {
             Log.e(DatabaseHelper.class.getName(), "Can't create database", e);
@@ -57,7 +58,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         try {
             Log.i(DatabaseHelper.class.getName(), "onUpgrade");
 
-            TableUtils.dropTable(connectionSource, FeedModel.class, true);
+            TableUtils.dropTable(connectionSource, Feed.class, true);
 
             onCreate(db);
         } catch (SQLException e) {
@@ -67,9 +68,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     }
 
 
-    public Dao<FeedModel, String> getFeedDao() throws SQLException {
+    public Dao<Feed, String> getFeedDao() throws SQLException {
         if (feedDao == null)
-        { feedDao = getDao(FeedModel.class);}
+        { feedDao = getDao(Feed.class);}
         return feedDao;
     }
 

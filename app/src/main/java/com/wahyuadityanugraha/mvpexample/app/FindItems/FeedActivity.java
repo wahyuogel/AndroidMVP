@@ -32,9 +32,11 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.j256.ormlite.android.apptools.OrmLiteBaseActivity;
 import com.wahyuadityanugraha.mvpexample.app.R;
 import com.wahyuadityanugraha.mvpexample.app.adapter.FeedAdapter;
 import com.wahyuadityanugraha.mvpexample.app.application.MyApplication;
+import com.wahyuadityanugraha.mvpexample.app.databases.Repo;
 import com.wahyuadityanugraha.mvpexample.app.entities.Feed;
 import com.wahyuadityanugraha.mvpexample.app.entities.Feeds;
 import com.wahyuadityanugraha.mvpexample.app.server.ConvertStringToJSON;
@@ -54,6 +56,7 @@ public class FeedActivity extends Activity implements FeedFunction, AdapterView.
     private FeedAdapter feedAdapter;
     private FeedPresenter presenter;
     private Feeds myFeeds;
+    private Repo repo;
     private JsonObjectRequest mJsonObjectRequest;
     private static final String API_URL = "http://api.androidhive.info/feed/feed.json";
 
@@ -124,6 +127,7 @@ public class FeedActivity extends Activity implements FeedFunction, AdapterView.
 
 
             try{
+                repo = new Repo(getApplicationContext());
                 myFeeds = ConvertStringToJSON.getFeeds(jsonObject.toString(), getApplicationContext());
             }catch (JsonParseException e){
                 myFeeds = null;
@@ -133,8 +137,12 @@ public class FeedActivity extends Activity implements FeedFunction, AdapterView.
                 myFeeds = null;
             }
 
-            if (myFeeds != null)
+            if (myFeeds != null) {
                 setItems(myFeeds.getFeed());
+                for (int i = 0; i < myFeeds.getFeed().size(); i++){
+                    myFeeds.getFeed().get(i).save(repo);
+                }
+            }
                 hideProgress();
         }
     };
