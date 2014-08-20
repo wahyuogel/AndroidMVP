@@ -20,7 +20,10 @@ package com.wahyuadityanugraha.mvpexample.app.finditems;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -43,10 +46,11 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.List;
 
-public class FeedActivity extends Activity implements FeedFunction, AdapterView.OnItemClickListener {
+public class FeedActivity extends Activity implements FeedFunction, AdapterView.OnItemClickListener, AbsListView.OnScrollListener, SwipeRefreshLayout.OnRefreshListener {
 
     private ListView listView;
     private ProgressBar progressBar;
+    private SwipeRefreshLayout swipeContainer;
     private FeedAdapter feedAdapter;
     private FeedPresenter presenter;
     private Feeds myFeeds;
@@ -75,8 +79,18 @@ public class FeedActivity extends Activity implements FeedFunction, AdapterView.
 
     private void findViews(){
         listView = (ListView) findViewById(R.id.list);
-        listView.setOnItemClickListener(this);
+
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+        swipeContainer.setEnabled(false);
+        swipeContainer.setOnRefreshListener(this);
+        swipeContainer.setColorScheme(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
         progressBar = (ProgressBar) findViewById(R.id.progress);
+
+        listView.setOnItemClickListener(this);
+        listView.setOnScrollListener(this);
     }
 
     @Override public void showProgress() {
@@ -132,4 +146,27 @@ public class FeedActivity extends Activity implements FeedFunction, AdapterView.
 
         }
     };
+
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override public void run() {
+                mJsonObjectRequest = new JsonObjectRequest(API_URL,null,mObjectListener,errorListener);
+                swipeContainer.setRefreshing(false);
+            }
+        }, 5000);
+    }
+
+    @Override
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+    }
+
+    @Override
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+        if (firstVisibleItem == 0)
+            swipeContainer.setEnabled(true);
+        else
+            swipeContainer.setEnabled(false);
+    }
 }
